@@ -15,7 +15,9 @@ for index in normal_table.index:
     for column in normal_table.columns:
         a = np.round(index+column,2)
         value,_ = quad(normalProbabilityDensity, np.NINF,a)
+        #print(value)
         normal_table.loc[index] = value
+        #print(normal_table.loc[index])
 normal_table.index=normal_table.index.astype(str)
 normal_table.columns= [str(column).ljust(4,'0') for column in normal_table.columns]
 print(tabulate(normal_table, headers = 'keys', tablefmt = 'psql')) 
